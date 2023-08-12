@@ -29,7 +29,7 @@ const Login = () => {
         // let resp = await fetch('houses.json')
         console.log('*************************');
                 console.log(email,pass)   ;
-            let resp = await axios.post('http://localhost:3002/login',{email,pass});
+            let resp = await axios.post(process.env.REACT_APP_LINKTOBACKEND+'login',{ email, pass });
             console.log(resp);
             //result
             let data = resp.data; // get the data

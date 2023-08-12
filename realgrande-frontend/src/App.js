@@ -16,15 +16,22 @@ function App() {
   let [allHouses, setAllHouses] = useState([])
   useEffect(() => {
     async function getHousesInfo(){
-      // let resp = await fetch('houses.json')
-      //let resp = await axios.get('http://localhost:3002/');
-      let resp = await axios.get(process.env.REACT_APP_LINKTOBACKEND)
-      console.log(resp);
-      let data = resp.data;
-      setAllHouses(data)
+      try{
+        // let resp = await fetch('houses.json')
+        //let resp = await axios.get('http://localhost:3002/');
+        // console.log(process.env.REACT_APP_LINKTOBACKEND + '/race');
+        let resp = await axios.get(process.env.REACT_APP_LINKTOBACKEND);
+        console.log(resp);
+        let data = resp.data;
+        setAllHouses(data);
+      }catch (error){
+          console.error(error);
+      }
+      
     }
-    getHousesInfo()
-  },[])
+    getHousesInfo();
+    
+  },[]);
 
 
   return (

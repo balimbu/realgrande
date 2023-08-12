@@ -29,7 +29,8 @@ const Inquiry = () => {
         async function postEnquiry(){    
             // post to the backend, the ename,email and remarks            
                 console.log('*************************');                
-            let resp = await axios.post('http://localhost:3002/addEnquiry',{ename,email,remarks});
+            // let resp = await axios.post('http://localhost:3002/addEnquiry',{ename,email,remarks});
+            let resp = await axios.post(process.env.REACT_APP_LINKTOBACKEND+'addEnquiry',{...contactInfo});
             console.log(resp);
             //result                    
             let data = resp.data;        
